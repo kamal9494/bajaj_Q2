@@ -36,7 +36,7 @@ app.post("/bfhl", (req, res) => {
     roll_number: roll_number,
     numbers: numbers,
     alphabets: alphabets,
-    highest_alphabet: highest_alphabet,
+    highest_alphabet: [highest_alphabet],
   };
 
   res.json(response_data);
