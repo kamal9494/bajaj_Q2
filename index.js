@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 const user_id = "kamal_teja_pushadapu_30052003";
 const email = "kamalteja.20bce7452@vitap.ac.in";
