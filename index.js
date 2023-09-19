@@ -13,13 +13,15 @@ app.use(bodyParser.json());
 app.post("/bfhl", (req, res) => {
   const data = req.body.data || [];
   const is_success = "data" in req.body;
-
   var alphabets = [];
   var numbers = [];
   var highest_alphabet = null;
-
+  let flag = false;
   for (var i = 0; i < data.length; i++) {
     if (isNaN(data[i])) {
+      if(data[i].length > 1){
+        flag = true;
+      }
       alphabets.push(data[i]);
       if (highest_alphabet === null || data[i] > highest_alphabet) {
         highest_alphabet = data[i];
@@ -39,7 +41,8 @@ app.post("/bfhl", (req, res) => {
     highest_alphabet: [highest_alphabet],
   };
 
-  res.json(response_data);
+  if(!flag) res.json(response_data);
+  else res.status(500).json({ message: "data array should only contain single character, never a word" });
 });
 
 app.get("/bfhl", (req, res) => {
