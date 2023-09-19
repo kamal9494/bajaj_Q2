@@ -43,9 +43,12 @@ app.post("/bfhl", (req, res) => {
 });
 
 app.get("/bfhl", (req, res) => {
-  if(req.body !== null) res.status(500).json({ "message": "User input is not allowed" });
-  const operation_code = 1;
-  res.status(200).json({ operation_code: operation_code });
+  if (Object.keys(req.body).length !== 0)
+    res.status(500).json({ message: "Input is not allowed" });
+  else {
+    const operation_code = 1;
+    res.status(200).json({ operation_code: operation_code });
+  }
 });
 
 app.listen(port, () => {
